@@ -1,7 +1,14 @@
-<html>
-<head><title>Lista de Productos</title></head>
-<body>
+{% extends "home/base.html" %}
+{% block title %} Lista de Productos{% endblock %}
+{% block content %}
 <h1>Catalogo de Productos:</h1>
+<br>
+{% if user.is_authenticated %}
+
+<a href="{% url vista_agregar_producto %}">Agregar nuevo</a>
+{% endif %}
+<br>
+
 {% if productos %}
 	{% for p in productos %}
 		<p>{{p.nombre}}</p>
@@ -10,7 +17,4 @@
 {% else %}
 	<h2>No exixten productos activos a la venta :( </h2>
 {% endif %}
-
-</body>
-
-</html>
+{% endblock %}

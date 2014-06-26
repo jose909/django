@@ -1,5 +1,10 @@
-<html>
-<head><title>Acerca de.....</title></head>
+{% extends "home/base.html" %}
+{% block title %} Lista de Productos{% endblock %}
+{% block content %}
+<br>
+
+<title>Acerca de.....</title>
 <body>Esta es un acerca de mi pagina:</body>
 <h3> {{ msg }} </h3>
-</html>
+
+{% endblock %}

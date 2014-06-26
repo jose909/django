@@ -5,6 +5,10 @@ urlpatterns = patterns('demo.apps.home.views',
 	url(r'^about/$','about_view',name='vista_about'),
 	url(r'^productos/$','productos_view',name='vista_productos'),
 	url(r'^contacto/$','contacto_view',name='vista_contacto'),
+
+	url(r'^login/$','login_view',name='vista_login'),
+	url(r'^logout/$','logout_view',name='logout_contacto'),
+
 	
 
 )

@@ -1,4 +1,20 @@
-<html>
-<head><title>Bienvenidos.....</title></head>
-<body>Esta es mi primera pagina en Django</body>
-</html>
+
+{% extends "home/base.html" %}
+{% block title %} Lista de Productos{% endblock %}
+{% block content %}
+<br>
+
+<title>Agregar Producto</title>
+<body>
+
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Grabar">
+		<input type="reset" value="Limpiar">
+	</form>
+<br>
+	{{ informacion }}
+	
+<a href=" {% url vista_productos %} "> Regresar a la lista de Productos</a>
+{% endblock %}
