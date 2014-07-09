@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'demo',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -107,6 +107,9 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'demo.urls'
 
+#Identificar o definir el perfil de los usuarios
+AUTH_PROFILE_MODULE = 'home.userProfile'
+
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'demo.wsgi.application'
 
@@ -130,7 +133,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    
     'demo.apps.ventas',
+    'demo.apps.home',
+    'demo.apps.webServices.wsProductos',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
