@@ -10,18 +10,33 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+MOTO_DB = 'mysql' #configuracion del motor de base de datos del proyecto
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'demo',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+if MOTO_DB == 'mysql':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'demo',                      # Or path to database file if using sqlite3.
+            # The mysqlfollowing settings are not used with sqlite3:
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
     }
-}
+
+if MOTO_DB == 'sqlite':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': os.path.join(os.path.dirname(__file__),'demo.db'),# Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'root',
+            'PASSWORD': '1985sanmiguel',
+            'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
+    }    
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -69,6 +84,9 @@ STATIC_ROOT = ''
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
+#Permitir el CORS a todo el mundo
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     
@@ -95,6 +113,19 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+
+TEMPLATE_CONTEXT_PROCESSORS =(
+        "django.contrib.auth.context_processors.auth",
+        "django.core.context_processors.debug",
+        "django.core.context_processors.i18n",
+        "django.core.context_processors.media",
+        "django.core.context_processors.static",
+        "django.core.context_processors.tz",
+        "django.contrib.messages.context_processors.messages",
+        "demo.apps.context_processors.my_processor",
+
+    )
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -103,6 +134,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+     'corsheaders.middleware.CorsMiddleware',
+    
 )
 
 ROOT_URLCONF = 'demo.urls'
@@ -137,6 +171,7 @@ INSTALLED_APPS = (
     'demo.apps.ventas',
     'demo.apps.home',
     'demo.apps.webServices.wsProductos',
+    'corsheaders',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -176,3 +211,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'rosaleayal19@hotmail.com'
 EMAIL_HOST_PASSWORD = '?????'
 EMAIL_USE_TLS = True
+
+
+URL_LOGIN='/login/'

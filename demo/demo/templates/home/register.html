@@ -4,17 +4,7 @@
 
 <form action="." method="POST">
 	{%  csrf_token %}
-	{{ mensaje }}
 	{{ form.as_p }}
-	{% if next %}
-		<input type="hidden" value="{{next}}" name="next">
-	{% else %}	
-		<input type="hidden" value="/" name="next">
-	{% endif %}	
-
 	<button class="btn btn-primary" type="submit">Acceder</button>
-	<h5>Registrate <a href="/registro">aqui</a></h5>
-
-
 </form>
 {% endblock %}

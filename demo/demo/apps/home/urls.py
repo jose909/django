@@ -9,6 +9,7 @@ urlpatterns = patterns('demo.apps.home.views',
 
 	url(r'^login/$','login_view',name='vista_login'),
 	url(r'^logout/$','logout_view',name='logout_contacto'),
+	url(r'^registro/$','register_view',name='vista_regitro'),
 
 	
 

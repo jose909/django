@@ -1,10 +1,13 @@
-{% extends "home/base.html" %}
-{% block title %} Lista de Productos{% endblock %}
-{% block content %}
-<br>
 
-<title>Acerca de.....</title>
-<body>Esta es un acerca de mi pagina:</body>
-<h3> {{ msg }} </h3>
+
+	{% extends "home/base.html" %}
+	{% block title %} Lista de Productos{% endblock %}
+	{% block content %}
+	<br>
+
+	<title>Acerca de.....</title>
+	<body>Esta es un acerca de mi pagina:</body>
+	<h3> {{ msg }} </h3>
+	<p> Version Django: {{version}} </p>
 
 {% endblock %}

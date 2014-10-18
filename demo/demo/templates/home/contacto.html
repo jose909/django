@@ -13,6 +13,7 @@
 	<p> Titulo: {{titulo}} </p>
 	<p> Texto Citado: </p> <br><h3> {{texto}} </h3>
 {% else %}	
+
 	<form action="." method="POST">
 		{% csrf_token %}
 		{{form.as_p}}
